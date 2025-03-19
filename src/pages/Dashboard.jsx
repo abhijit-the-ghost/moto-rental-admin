@@ -1,101 +1,61 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import DefaultLayout from "../components/DefaultLayout";
-// import { useNavigate } from "react-router-dom";
+import AdminService from "../services/AdminService";
 
-
-const Dashboard = () => {
- 
+const AdminDashboard = () => {
   const [stats, setStats] = useState({
-    motorcycles: 0,
-    users: 0,
+    totalUsers: 0,
+    totalMotorcycles: 0,
     rentedPercentage: 0,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulated API call (Replace with real data later)
-    setTimeout(() => {
-      setStats({
-        motorcycles: 120,
-        users: 45,
-        rentedPercentage: 60,
-      });
-    }, 1000);
+    fetchStats();
   }, []);
 
-  
+  const fetchStats = async () => {
+    setLoading(true);
+    const data = await AdminService.getDashboardStats();
+    setStats(data);
+    setLoading(false);
+  };
+
   return (
     <DefaultLayout>
-      <>
-        <div className="flex min-h-screen min-w-full bg-gray-100">
-          {/* Main Content */}
-          <div className="flex-1 p-6">
-            <h2 className="text-2xl font-bold">Welcome, Admin</h2>
+      <div className="p-6 w-full min-h-screen">
+        <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
 
-            {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-              <div className="stats shadow">
-                <div className="stat">
-                  <div className="stat-title">Total Motorcycles</div>
-                  <div className="stat-value text-primary">
-                    {stats.motorcycles}
-                  </div>
-                </div>
-              </div>
-
-              <div className="stats shadow">
-                <div className="stat">
-                  <div className="stat-title">Total Users</div>
-                  <div className="stat-value text-secondary">{stats.users}</div>
-                </div>
-              </div>
-
-              <div className="stats shadow">
-                <div className="stat">
-                  <div className="stat-title">Rented Motorcycles</div>
-                  <div className="stat-value text-accent">
-                    {stats.rentedPercentage}%
-                  </div>
-                </div>
-              </div>
+        {loading ? (
+          <p className="text-center text-gray-500">Loading stats...</p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* ✅ Total Users */}
+            <div className="card bg-primary text-primary-content shadow-xl p-6">
+              <h2 className="text-lg font-bold">Total Users</h2>
+              <p className="text-4xl font-bold mt-2">{stats.totalUsers}</p>
             </div>
 
-            {/* Recent Activities */}
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold">Recent Activities</h3>
-              <div className="overflow-x-auto mt-4">
-                <table className="table w-full">
-                  <thead>
-                    <tr>
-                      <th>Activity</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>New User Registered</td>
-                      <td>2025-03-18</td>
-                      <td className="text-green-500">Completed</td>
-                    </tr>
-                    <tr>
-                      <td>Motorcycle Rented</td>
-                      <td>2025-03-17</td>
-                      <td className="text-blue-500">Pending</td>
-                    </tr>
-                    <tr>
-                      <td>Payment Received</td>
-                      <td>2025-03-16</td>
-                      <td className="text-green-500">Completed</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            {/* ✅ Total Motorcycles */}
+            <div className="card bg-secondary text-secondary-content shadow-xl p-6">
+              <h2 className="text-lg font-bold">Total Motorcycles</h2>
+              <p className="text-4xl font-bold mt-2">
+                {stats.totalMotorcycles}
+              </p>
+            </div>
+
+            {/* ✅ Rented Motorcycle Percentage */}
+            <div className="card bg-accent text-accent-content shadow-xl p-6">
+              <h2 className="text-lg font-bold">Rented Percentage</h2>
+              <p className="text-4xl font-bold mt-2">
+                {stats.rentedPercentage}%
+              </p>
             </div>
           </div>
-        </div>
-      </>
+        )}
+      </div>
     </DefaultLayout>
   );
 };
 
-export default Dashboard;
+export default AdminDashboard;

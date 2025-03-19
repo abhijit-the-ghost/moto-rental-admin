@@ -11,7 +11,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Handle Login Submit
+  // ✅ Handle Login Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -21,7 +21,7 @@ const Login = () => {
     const response = await AuthService.login(email, password);
 
     if (response.error) {
-      setError(response.error);
+      setError(response.error); // ✅ Show error if not admin
     } else {
       alert("Login Successful!");
       navigate("/"); // ✅ Redirect to dashboard after login

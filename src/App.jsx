@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Uses";
 import Motorcycle from "./pages/Motorcycle";
 import Login from "./pages/Login";
-import AdminRoute from "./components/AdminRoute"; // ✅ Import Admin Protected Route
+import AdminRoute from "./components/AdminRoute"; // ✅ Import Admin Route
 
 const App = () => {
   return (
