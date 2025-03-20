@@ -251,6 +251,30 @@ const Motorcycle = () => {
                   onChange={handleChange}
                   required
                 ></textarea>
+                <label className="label mt-2">
+                  <span className="label-text">Rent Price ($/day)</span>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  className="input input-bordered w-full mb-2"
+                  placeholder="Enter price"
+                  value={editMotorcycle?.price}
+                  onChange={handleChange}
+                  required
+                />
+                <label className="label mt-2">
+                  <span className="label-text">Status</span>
+                </label>
+                <select
+                  name="status"
+                  className="select select-bordered w-full mb-2"
+                  value={editMotorcycle?.status}
+                  onChange={handleChange}
+                >
+                  <option value="Available">Available</option>
+                  <option value="Rented">Rented</option>
+                </select>
                 <input
                   type="file"
                   accept="image/*"
