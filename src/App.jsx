@@ -4,6 +4,7 @@ import Users from "./pages/Uses";
 import Motorcycle from "./pages/Motorcycle";
 import Login from "./pages/Login";
 import AdminRoute from "./components/AdminRoute"; // ✅ Import Admin Route
+import Rents from "./pages/Rents";
 
 const App = () => {
   return (
@@ -33,6 +34,14 @@ const App = () => {
           element={
             <AdminRoute>
               <Motorcycle />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/rents"
+          element={
+            <AdminRoute>
+              <Rents />
             </AdminRoute>
           }
         />

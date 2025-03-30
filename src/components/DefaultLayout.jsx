@@ -40,6 +40,9 @@ const DefaultLayout = ({ children }) => {
               <a href="/users">Users</a>
             </li>
             <li>
+              <a href="/rents">Rents</a>
+            </li>
+            <li>
               <a onClick={handleLogout}>Logout</a>
             </li>
           </ul>

@@ -152,7 +152,7 @@ const Users = () => {
 
         {/* ✅ User Modal */}
         {isModalOpen && selectedUser && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="fixed inset-0 flex items-center justify-center backdrop-brightness-50">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
               <h2 className="text-xl font-bold">{selectedUser.name}</h2>
               <p>Email: {selectedUser.email}</p>
