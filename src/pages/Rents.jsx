@@ -50,8 +50,8 @@ const Rents = () => {
 
   return (
     <DefaultLayout>
-      <div className="p-6 min-h-screen bg-gray-100">
-        <h2 className="text-2xl font-bold mb-6 text-center">All Rents</h2>
+      <div className="p-6 min-h-screen bg-gray-100 w-full">
+        <h2 className="text-2xl font-bold mb-6 text-start">All Rents</h2>
 
         {rents.length > 0 ? (
           <div className="overflow-x-auto">
@@ -65,7 +65,7 @@ const Rents = () => {
                   <th className="p-3 text-left">Start Date</th>
                   <th className="p-3 text-left">End Date</th>
                   <th className="p-3 text-left">Status</th>
-                  <th className="p-3 text-left">Total Cost</th>
+                  {/* <th className="p-3 text-left">Total Cost</th> */}
                 </tr>
               </thead>
               <tbody>
@@ -88,14 +88,14 @@ const Rents = () => {
                         {rent.status}
                       </span>
                     </td>
-                    <td className="p-3">${rent.totalCost}</td>
+                    {/* <td className="p-3">${rent.totalCost}</td> */}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
         ) : (
-          <p className="text-center text-gray-500">
+          <p className="text-start text-gray-500">
             No rental records available.
           </p>
         )}

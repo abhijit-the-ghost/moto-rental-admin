@@ -31,11 +31,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-xl">
-        <h2 className="text-2xl font-bold text-center text-gray-800">
-          Admin Login
-        </h2>
+    <div className="flex min-h-screen items-center justify-center bg-base">
+      <div className="w-full max-w-md bg-base-300 p-8 shadow-lg rounded-xl">
+        <h2 className="text-2xl font-bold text-center">Admin Login</h2>
 
         {error && <p className="text-red-500 text-center mt-2">{error}</p>}
 

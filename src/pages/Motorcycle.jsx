@@ -130,7 +130,7 @@ const Motorcycle = () => {
           ) : (
             <table className="table w-full border-collapse">
               <thead>
-                <tr className="bg-base-200">
+                <tr className="bg-primary">
                   <th>#</th>
                   <th>Name</th>
                   <th>Company</th>
@@ -144,7 +144,7 @@ const Motorcycle = () => {
               <tbody>
                 {motorcycles.length > 0 ? (
                   motorcycles.map((moto, index) => (
-                    <tr key={moto._id} className="hover:bg-base-100">
+                    <tr key={moto._id} className="bg-base-100">
                       <td>{index + 1 + (page - 1) * MOTORCYCLES_PER_PAGE}</td>
                       <td>{moto.name}</td>
                       <td>{moto.company}</td>
@@ -153,8 +153,8 @@ const Motorcycle = () => {
                       <td
                         className={
                           moto.status === "Available"
-                            ? "text-green-500"
-                            : "text-red-500"
+                            ? "text-success"
+                            : "text-error"
                         }
                       >
                         {moto.status}
